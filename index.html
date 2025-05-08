@@ -1,189 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jugadores </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #a77e7e;
-        }
-        header {
-            background-color: rgb(112, 99, 99);
-            color: white;
-            padding: 20px;
-            text-align: left;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        nav {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            display: inline-block;
-            position: relative;
-        }
-        a{
-            text-decoration: none;
-        }
-        #a{
-            color: white;
-            width: 10px;
-            position: absolute;
-            left: 800px;
-        }
-        #a:hover{
-            color: skyblue;
-            cursor: pointer;
-        }
-        #b{
-            color: white;
-            width: 10px;
-            position: absolute;
-            left: 880px;
-        }
-        #b:hover{
-            color: skyblue;
-            cursor: pointer;
-        }
-        #c{
-            color: white;
-            width: 10px;
-            position: absolute;
-            left: 980px;
-        }
-        #c:hover{
-            color: skyblue;
-            cursor: pointer;
-        }
-        #d{
-            color: white;
-            width: 10px;
-            position: absolute;
-            left: 1080px;
-        }
-        #d:hover{
-            color: skyblue;
-            cursor: pointer;
-        }
-
-        .container {
-            width: 60%;
-            margin: auto;
-        }
-        .players {
-            display: flex;
-            margin-top: 20px;
-            
-        }
-        .tarjeta {
-            background: white;
-            margin: 20px;
-            width: 30%;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 5px;
-            flex: 1;
-            transition: transform 0.3s;
-        }
-        .tarjeta:hover{
-            width: 35%;
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-        .tarjeta img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border-bottom: 1px solid #ddd;
-            margin: 5px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: rgb(139, 128, 113);
-            color: white;
-        }
-       
-        tr:hover{
-            background-color: lightgray;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animación del Sol y la Luna</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    .scene {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .sky {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: sky-change 20s infinite linear;
+    }
+    
+    .sun {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.7);
+      left: -60px;
+      top: 40px;
+      animation: move-sun 20s infinite linear;
+    }
+    
+    .moon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #f2f2f2;
+      border-radius: 50%;
+      box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+      left: -50px;
+      top: 45px;
+      animation: move-moon 20s infinite linear;
+    }
+    
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background-color: #4b7f52;
+      z-index: 2;
+    }
+    
+    @keyframes sky-change {
+      0%, 100% { background: linear-gradient(to bottom, #0e1538, #2a4171); }
+      25% { background: linear-gradient(to bottom, #1e56b0, #4a8fe3); }
+      50% { background: linear-gradient(to bottom, #57a0e5, #9ccdf9); }
+      75% { background: linear-gradient(to bottom, #4a8fe3, #1e56b0); }
+    }
+    
+    @keyframes move-sun {
+      0%, 100% { transform: translateX(-60px); opacity: 0; }
+      25% { transform: translateX(150px); opacity: 1; }
+      50% { transform: translateX(560px); opacity: 0; }
+      51%, 99% { opacity: 0; }
+    }
+    
+    @keyframes move-moon {
+      0%, 50%, 100% { opacity: 0; }
+      50% { transform: translateX(-50px); }
+      75% { transform: translateX(250px); opacity: 1; }
+      99% { transform: translateX(550px); opacity: 0; }
+    }
+    
+  </style>
 </head>
 <body>
-    <header>
-        Jugadores Por Johan Guzman
-        <nav>
-            <a href="#" id="a">Inicio</a>
-            <a href="#" id="b">Galería</a>
-            <a href="#" id="c">Destinos</a>
-            <a href="#" id="d">Contacto</a>
-        </nav>
-    </header>
-    
-    <div class="container">
-        <div class="players">
-            <div class="tarjeta">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb-NGEQDekk2BwsllLjk4tcIM_BPIzXECdsg&s"alt="cr7">
-                <h3>Cristiano Ronaldo</h3>
-                <p>Ejemplo claro de esfuerzo duro, también de jugador disciplinado y completo.</p>
-            </div>
-            <div class="tarjeta">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/250px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"alt="messi">
-                <h3>Lionel Messi</h3>
-                <p>El talento en persona, un genio con el balon.</p>
-            </div>
-            <div class="tarjeta">
-                <img src="https://eloncehn.com/wp-content/uploads/2024/11/imagen38565.png"alt="cc13">
-                <h3>Carlos Costly</h3>
-                <p>Jugador que cambio el estilo de juego de su posicion, un fenomeno y una muralla.</p>
-            </div>
-        </div>
-        
-        <table>
-            <tr>
-                <th>Nombre del Jugador</th>
-                <th>Nacionalidad</th>
-                <th>Posición</th>
-                <th>Mejor Temporada</th>
-            </tr>
-            <tr>
-                <td>Cristaino Ronaldo</td>
-                <td>Portugal</td>
-                <td>Delantero centro o extremo por izquierda</td>
-                <td>Temporada 2007/2008</td>
-            </tr>
-            <tr>
-                <td>Lionel Messi</td>
-                <td>Argentina</td>
-                <td>Extremo por derecha</td>
-                <td>Temporada 2011/2012</td>
-            </tr>
-            <tr>
-                <td>Manuel Neuer</td>
-                <td>Alemania</td>
-                <td>Portero</td>
-                <td>Temporada 2013/2014</td>
-            </tr>
-            <tr>
-                <td>Neymar Junior</td>
-                <td>Brasil</td>
-                <td>Extremo por izquierda</td>
-                <td>Temporada 2014/2015</td>
-            </tr>
-        </table>
-    </div>
+  <div class="scene">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="moon"></div>
+    <div class="ground"></div>
+  </div>
+
+ 
 </body>
 </html>
